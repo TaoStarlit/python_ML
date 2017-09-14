@@ -31,6 +31,7 @@ df_test_positive = df_test.loc[df_test['Type']
 import matplotlib.pyplot as plt
 
 # 绘制良性肿瘤样本点，标记为红色o, 恶性肿瘤标记为黑色的x, Marker size is scaled by s
+plt.figure("1 the test set")
 plt.scatter(df_test_negative['Clump Thickness'],
             df_test_negative['Cell Size'], marker='o', s=200, c='red')
 plt.scatter(df_test_positive['Clump Thickness'],
@@ -39,7 +40,7 @@ plt.scatter(df_test_positive['Clump Thickness'],
 plt.xlabel('Clump Thickness')
 plt.ylabel('Cell Size')
 # 这个图作为1-2显示
-plt.show()
+# plt.show()放到最后
 
 
 # 导入numpy工具包，重命名为np
@@ -50,6 +51,7 @@ coef = np.random.random((2))
 lx = np.arange(0, 10)
 ly = (-intercept - lx * coef[0]) / coef[1]
 # 绘制这条随机的直线
+plt.figure("2 random line for the test set")
 plt.plot(lx, ly, c='yellow')
 
 
@@ -60,7 +62,7 @@ plt.scatter(df_test_positive['Clump Thickness'],
             df_test_positive['Cell Size'], marker='o', s=150, c='black')
 plt.xlabel('Clump Thickness')
 plt.ylabel('Cell Size')
-plt.show()
+# plt.show()放到最后
 
 
 
@@ -82,6 +84,7 @@ coef=lr.coef_[0,:]
 ly = (-intercept - lx * coef[0]) / coef[1] #这里是一般式 和 y函数式吧
 
 #像前面一样绘制图 1-4
+plt.figure("3 model with 10 training samples for the test set")
 plt.plot(lx,ly,c='green')
 plt.scatter(df_test_negative['Clump Thickness'],
             df_test_negative['Cell Size'], marker='o', s=200, c='red')
@@ -89,7 +92,7 @@ plt.scatter(df_test_positive['Clump Thickness'],
             df_test_positive['Cell Size'], marker='o', s=150, c='black')
 plt.xlabel('Clump Thickness')
 plt.ylabel('Cell Size')
-plt.show()
+# plt.show()放到最后
 
 
 #这次训练所有的数据
@@ -105,6 +108,7 @@ coef=lr.coef_[0,:]
 ly=(-lx*coef[0]-intercept)/coef[1]
 
 #绘制图1-5
+plt.figure("4 model with all training samples for the test set")
 plt.plot(lx,ly,c='blue')
 plt.scatter(df_test_negative['Clump Thickness'],
             df_test_negative['Cell Size'],marker='o',s=200,c='red')
